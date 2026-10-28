@@ -7,12 +7,16 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
     steps:
       - uses: actions/checkout@v6
+      - uses: garnet-org/action@96e9f81ec0f59f2322e8c67b43c4d4017d932ad3 # v2.4.1
 
       - uses: oven-sh/setup-bun@v2
         with:
-          bun-version: 1.2.12
+          bun-version: 1.4.4
 
       - name: Install dependencies
         run: bun install
@@ -25,9 +29,9 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      - uses: oven-sh/setup-bun@v1
+      - uses: oven-sh/setup-bun@v2
         with:
-          bun-version: latest
+          bun-version: 1.4.4
 
       - name: Install dependencies
         run: bun install
@@ -42,7 +46,7 @@ jobs:
 
       - uses: oven-sh/setup-bun@v2
         with:
-          bun-version: 1.2.12
+          bun-version: 1.4.4
 
       - name: Install dependencies
         run: bun install
